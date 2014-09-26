@@ -1,0 +1,52 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.avatar{
+	width: 200px;
+}
+
+.avatar-cadastro{
+	width: 148px;
+}
+
+.cargo{
+	font-style: italic;
+	color: #a5a5a5;
+}
+
+.votos{
+	margin-top: 13px;
+}
+
+.numero{
+	font-size: 10px
+}
+
+.nome {
+	font-style: italic;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.salvar{
+	margin-left: 20px;
+	width: 100px;
+}
+
+.padding-top-100{ padding-top: 100px; }
+.padding-top-20{ padding-top: 20px; }
+
+.candidato{
+	margin-top: 20px;
+}
+
+footer{
+	width: 1170px;
+	margin-right: auto;
+	margin-left: auto;
+}
