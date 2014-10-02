@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pesquisaeleitoral.dao.CandidatoDao;
 import com.pesquisaeleitoral.model.Candidato;
 
 /**
@@ -49,8 +50,11 @@ public class CandidatoController extends HttpServlet {
 		String cargo = request.getParameter("cargo");
 		
 		Candidato candidato = new Candidato(nome, foto, partido, numero, cargo);
-		request.setAttribute("candidato", candidato);
+
+		CandidatoDao dao = new CandidatoDao();
+		dao.salvar(candidato);
 		
+		request.setAttribute("candidato", candidato);
 		RequestDispatcher rd = request.getRequestDispatcher("/listagem.jsp");
 		rd.forward(request, response);
 	}
