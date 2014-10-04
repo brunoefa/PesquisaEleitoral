@@ -17,6 +17,10 @@ public class Candidato {
 		this.numero = numero;
 		this.cargo = cargo;
 	}
+	
+	public Candidato() {
+		super();
+	}
 
 	public Integer getId() {
 		return id;

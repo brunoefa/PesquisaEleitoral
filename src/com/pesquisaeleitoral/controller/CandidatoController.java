@@ -1,6 +1,7 @@
 package com.pesquisaeleitoral.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,13 +19,15 @@ import com.pesquisaeleitoral.model.Candidato;
 @WebServlet("/candidato")
 public class CandidatoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private CandidatoDao dao;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public CandidatoController() {
         super();
-        // TODO Auto-generated constructor stub
+        dao = new CandidatoDao();
     }
 
 	/**
@@ -42,30 +45,33 @@ public class CandidatoController extends HttpServlet {
 	}
 	
 	private void salvar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
-		
+		Candidato candidato = requisicaoCandidato(request); 
+		dao.salvar(candidato);
+		request.setAttribute("candidato", candidato);
+		encaminhaRequisicao("/listagem.jsp", request, response);
+	}
+	
+	private Candidato requisicaoCandidato(HttpServletRequest request)  throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		String foto = request.getParameter("foto");
 		String partido = request.getParameter("partido");
 		String numero = request.getParameter("numero");
 		String cargo = request.getParameter("cargo");
-		
-		Candidato candidato = new Candidato(nome, foto, partido, numero, cargo);
-
-		CandidatoDao dao = new CandidatoDao();
-		dao.salvar(candidato);
-		
-		request.setAttribute("candidato", candidato);
-		RequestDispatcher rd = request.getRequestDispatcher("/listagem.jsp");
+		return new Candidato(nome, foto, partido, numero, cargo);
+	}
+	
+	private void encaminhaRequisicao(String recurso, HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(recurso);
 		rd.forward(request, response);
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/listagem.jsp");
-		rd.forward(request, response);
+		List<Candidato> listaCandidatos = dao.buscarTodos();
+		request.setAttribute("listaCandidatos", listaCandidatos);
+		encaminhaRequisicao("/listagem.jsp", request, response);
 	}
 	
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/cadastro.jsp");
-		rd.forward(request, response);
+		encaminhaRequisicao("/cadastro.jsp", request, response);
 	}
 }
