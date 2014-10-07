@@ -16,6 +16,20 @@ public class CandidatoDao {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 	
+	public void deletar(Integer id) {
+		String sql = "delete from candidato where id = ?";
+		try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+			stm.setInt(1, id);
+			stm.execute();
+			stm.close();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+	}
+	
 	public void salvar(Candidato candidato) {
 		String sql = "insert into candidato (nome, foto, partido, cargo, numero) values (?, ?, ?, ?, ?)";
 		try {

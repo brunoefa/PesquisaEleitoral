@@ -30,9 +30,6 @@ public class CandidatoController extends HttpServlet {
         dao = new CandidatoDao();
     }
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
 		if ("listar".equals(acao)) {
@@ -41,37 +38,45 @@ public class CandidatoController extends HttpServlet {
 			cadastrar(request, response);
 		} else if ("salvar".equals(acao)) {
 			salvar(request, response);
+		} else if ("deletar".equals(acao)) {
+			deletar(request, response);
 		}
 	}
 	
+	private void deletar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		Candidato candidato = obterCandidato(request); 
+		dao.deletar(candidato.getId());
+		listar(request, response);
+	}
+
 	private void salvar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
-		Candidato candidato = requisicaoCandidato(request); 
+		Candidato candidato = obterCandidato(request); 
 		dao.salvar(candidato);
-		request.setAttribute("candidato", candidato);
-		encaminhaRequisicao("/listagem.jsp", request, response);
+		listar(request, response);
 	}
 	
-	private Candidato requisicaoCandidato(HttpServletRequest request)  throws ServletException, IOException {
+	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Candidato> listaCandidatos = dao.buscarTodos();
+		request.setAttribute("listaCandidatos", listaCandidatos);
+		encaminharRequisicao("/listagem.jsp", request, response);
+	}
+	
+	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		encaminharRequisicao("/cadastro.jsp", request, response);
+	}
+	
+	private Candidato obterCandidato(HttpServletRequest request)  throws ServletException, IOException {
+		Integer id = Integer.parseInt(request.getParameter("id"));
 		String nome = request.getParameter("nome");
 		String foto = request.getParameter("foto");
 		String partido = request.getParameter("partido");
 		String numero = request.getParameter("numero");
 		String cargo = request.getParameter("cargo");
-		return new Candidato(nome, foto, partido, numero, cargo);
+		return new Candidato(id, nome, foto, partido, numero, cargo);
 	}
 	
-	private void encaminhaRequisicao(String recurso, HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+	private void encaminharRequisicao(String recurso, HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher(recurso);
 		rd.forward(request, response);
-	}
-
-	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Candidato> listaCandidatos = dao.buscarTodos();
-		request.setAttribute("listaCandidatos", listaCandidatos);
-		encaminhaRequisicao("/listagem.jsp", request, response);
-	}
-	
-	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		encaminhaRequisicao("/cadastro.jsp", request, response);
 	}
 }

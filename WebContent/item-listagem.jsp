@@ -9,7 +9,7 @@
           <div class="col-md-7">
           	<h1 class="nome">${candidato.nome}</h1>
           	<h4 class="cargo">${candidato.cargo}</h4>
-          	<span class="label label-danger">${candidato.partido}</span>&nbsp;<span class="label label-default">${candidato.numero}</span>
+          	<span class="label label-danger">${candidato.partido}</span>&nbsp;<span class="label label-default">${candidato.numero}</span>&nbsp;<a href="candidato?acao=deletar&id=${candidato.id}">Deletar</a>
           	<div class="progress votos">
 			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
 			    ${candidato.votos} Votos

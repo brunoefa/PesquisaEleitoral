@@ -4,9 +4,6 @@
 <jsp:include page="cabecalho.jsp" />
 <jsp:include page="titulo-listagem.jsp" />
 
-
-
-
 <div class="container">
 	<c:forEach items="${listaCandidatos}" var="candidato">
 		<c:set scope="request" var="candidato" value="${candidato}" />

@@ -9,8 +9,9 @@ public class Candidato {
 	private String cargo;
 	private Integer votos;
 
-	public Candidato(String nome, String foto, String partido, String numero, String cargo) {
+	public Candidato(Integer id, String nome, String foto, String partido, String numero, String cargo) {
 		super();
+		this.id = id;
 		this.nome = nome;
 		this.foto = foto;
 		this.partido = partido;
