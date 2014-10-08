@@ -81,7 +81,7 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-10 align-right">
-					<a href="#">Cancelar</a><button type="submit" class="btn btn-primary btn-lg salvar">Salvar</button>
+					<a href="/pesquisa">Cancelar</a><button type="submit" class="btn btn-primary btn-lg salvar">Salvar</button>
 				</div>
 			</div>
 		</form>

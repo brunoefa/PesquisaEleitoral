@@ -32,17 +32,17 @@ public class CandidatoController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
-		if ("listar".equals(acao)) {
-			listar(request, response);	
-		} else if ("cadastrar".equals(acao)) {
+		if ("cadastrar".equals(acao)) {
 			cadastrar(request, response);
 		} else if ("salvar".equals(acao)) {
 			salvar(request, response);
 		} else if ("deletar".equals(acao)) {
 			deletar(request, response);
+		}else {
+			listar(request, response);	
 		}
 	}
-	
+
 	private void deletar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		Candidato candidato = obterCandidato(request); 
 		dao.deletar(candidato.getId());
@@ -54,7 +54,7 @@ public class CandidatoController extends HttpServlet {
 		dao.salvar(candidato);
 		listar(request, response);
 	}
-	
+
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Candidato> listaCandidatos = dao.buscarTodos();
 		request.setAttribute("listaCandidatos", listaCandidatos);
