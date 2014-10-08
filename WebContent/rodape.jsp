@@ -3,7 +3,7 @@
 		<hr>
         <p>&copy; Senai 2014</p>
       </footer>
-
+	<jsp:include page="modal.jsp" /> 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

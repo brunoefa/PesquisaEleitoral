@@ -66,7 +66,11 @@ public class CandidatoController extends HttpServlet {
 	}
 	
 	private Candidato obterCandidato(HttpServletRequest request)  throws ServletException, IOException {
-		Integer id = Integer.parseInt(request.getParameter("id"));
+		Integer id = null;
+		String stringId = request.getParameter("id");
+		if (stringId != null && !stringId.isEmpty()) {
+			id = Integer.parseInt(stringId);
+		}
 		String nome = request.getParameter("nome");
 		String foto = request.getParameter("foto");
 		String partido = request.getParameter("partido");
