@@ -4,6 +4,7 @@ $('#confirmaExclusao #confirmar').click(function (e) {
 	window.location.href = destino;
 });
 
+
 $('#confirmaExclusao #cancelar').click(function (e) {
 	$('#confirmaExclusao').modal('hide')
 });
