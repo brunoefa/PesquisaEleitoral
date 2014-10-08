@@ -20,7 +20,7 @@
 			</div>
           </div>
           <div class="col-md-2 align-right padding-top-100">
-          	<p><button type="button" class="btn btn-primary btn-lg">Votar</button></p>
+          	<p><a href="#" class="btn btn-primary btn-lg">Votar</a></p>
           </div>
         </div>
       </div>
