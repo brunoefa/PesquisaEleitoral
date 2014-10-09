@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:set scope="request" var="candidato" value="${candidato}" />
+<c:set scope="request" var="percentual" value="${candidato.votos * 100 / total}" />
+
       <div class="row candidato">
         <div class="col-md-12">
           <div class="col-md-3">
@@ -14,13 +17,13 @@
           	<a href="#" id="linkDeletar" data-candidato-id="${candidato.id}" data-toggle="modal" data-target="#confirmaExclusao">Deletar</a>&nbsp;
           	
           	<div class="progress votos">
-			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${percentual}%;">
 			    ${candidato.votos} Votos
 			  </div>
 			</div>
           </div>
           <div class="col-md-2 align-right padding-top-100">
-          	<p><a href="#" class="btn btn-primary btn-lg">Votar</a></p>
+          	<p><a href="candidato?acao=votar&id=${candidato.id}" class="btn btn-primary btn-lg">Votar</a></p>
           </div>
         </div>
       </div>

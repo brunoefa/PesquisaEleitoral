@@ -38,8 +38,10 @@ public class CandidatoController extends HttpServlet {
 			salvar(request, response);
 		} else if ("deletar".equals(acao)) {
 			deletar(request, response);
+		} else if ("votar".equals(acao)) {
+			votar(request, response);
 		}else {
-			listar(request, response);	
+			listar(request, response);
 		}
 	}
 
@@ -50,14 +52,22 @@ public class CandidatoController extends HttpServlet {
 	}
 
 	private void salvar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
-		Candidato candidato = obterCandidato(request); 
+		Candidato candidato = obterCandidato(request);
 		dao.salvar(candidato);
+		listar(request, response);
+	}
+	
+	private void votar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		Candidato candidato = obterCandidato(request);
+		dao.registrarVoto(candidato);
 		listar(request, response);
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Candidato> listaCandidatos = dao.buscarTodos();
+		Integer total = dao.obterTotalDeVotos();
 		request.setAttribute("listaCandidatos", listaCandidatos);
+		request.setAttribute("total", total);
 		encaminharRequisicao("/listagem.jsp", request, response);
 	}
 	

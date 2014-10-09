@@ -50,6 +50,65 @@ public class CandidatoDao {
 		}
 	}
 	
+	public void registrarVoto(Candidato candidato) {
+		String sql = "update candidato set votos = votos + 1 where id = ?";
+		try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+			
+			stm.setInt(1, candidato.getId());
+			
+			stm.execute();
+			stm.close();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+	}
+	
+	public Integer obterTotalDeVotos() {
+		Integer total = 0;
+		String sql = "select sum(votos) as total from candidato";
+		try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				total = rs.getInt("total");
+			}
+			rs.close();
+			stm.close();
+			
+			return total;
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+	}
+	
+	public Candidato buscar(Integer id) {
+		Candidato candidato = new Candidato();
+		String sql = "select * from candidato where id = ?";
+		try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+			stm.setInt(1, id);
+			
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				candidato = preencheCandidato(rs);
+			}
+			rs.close();
+			stm.close();
+			
+			return candidato;
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+	}
+	
 	public List<Candidato> buscarTodos() {
 		List<Candidato> listaCandidatos = new ArrayList<Candidato>();
 		String sql = "select * from candidato order by nome";
