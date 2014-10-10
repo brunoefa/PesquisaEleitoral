@@ -30,6 +30,27 @@ public class CandidatoDao {
 		}
 	}
 	
+	public void editar(Candidato candidato) {
+		String sql = "update candidato set nome = ?, foto = ?, partido = ?, cargo = ?, numero = ? where id = ?";
+		try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+			
+			stm.setString(1, candidato.getNome());
+			stm.setString(2, candidato.getFoto());
+			stm.setString(3, candidato.getPartido());
+			stm.setString(4, candidato.getCargo());
+			stm.setString(5, candidato.getNumero());
+			stm.setInt(6, candidato.getId());
+			
+			stm.execute();
+			stm.close();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+	}
+	
 	public void salvar(Candidato candidato) {
 		String sql = "insert into candidato (nome, foto, partido, cargo, numero) values (?, ?, ?, ?, ?)";
 		try {

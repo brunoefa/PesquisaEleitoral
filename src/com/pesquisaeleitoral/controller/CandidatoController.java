@@ -55,7 +55,11 @@ public class CandidatoController extends HttpServlet {
 
 	private void salvar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		Candidato candidato = obterCandidato(request);
-		dao.salvar(candidato);
+		if (candidato.getId() == null) {
+			dao.salvar(candidato);
+		}else {
+			dao.editar(candidato);
+		}
 		listar(request, response);
 	}
 	

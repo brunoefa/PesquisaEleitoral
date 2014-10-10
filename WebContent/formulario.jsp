@@ -33,7 +33,7 @@
 				<div class="col-md-2">
 					<div class="form-group">
 						<label for="input-partido">Partido</label>
-						<select class="form-control" id="input-partido" name="partido">
+						<select class="form-control" id="input-partido" name="partido" data-option-selected="${candidato.partido}">
 							<option>PDT</option>
 							<option>PT</option>
 							<option>DEM</option>
@@ -69,7 +69,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="input-cargo">Cargo</label>
-						<select class="form-control" id="input-partido" name="cargo" id="input-cargo">
+						<select class="form-control" id="input-partido" name="cargo" id="input-cargo" data-option-selected="${candidato.cargo}">
 							<option>Presidente da República</option>
 							<option>Governador</option>
 							<option>Deputado Federal</option>
@@ -82,7 +82,9 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-10 align-right">
-					<a href="/pesquisa">Cancelar</a><button type="submit" class="btn btn-primary btn-lg salvar">Salvar</button>
+					<a href="/pesquisa">Cancelar</a>
+					<button type="submit" class="btn btn-default btn-lg publicar">Salvar como rascunho</button>
+					<button type="submit" class="btn btn-primary btn-lg salvar">Publicar</button>
 				</div>
 			</div>
 		</form>
