@@ -40,6 +40,8 @@ public class CandidatoController extends HttpServlet {
 			deletar(request, response);
 		} else if ("votar".equals(acao)) {
 			votar(request, response);
+		} else if ("editar".equals(acao)) {
+			editar(request, response);
 		}else {
 			listar(request, response);
 		}
@@ -72,7 +74,15 @@ public class CandidatoController extends HttpServlet {
 	}
 	
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		encaminharRequisicao("/cadastro.jsp", request, response);
+		encaminharRequisicao("/formulario.jsp", request, response);
+	}
+	
+	private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Candidato candidato = new Candidato();
+		candidato = obterCandidato(request);
+		candidato = dao.buscar(candidato.getId());
+		request.setAttribute("candidato", candidato);
+		encaminharRequisicao("/formulario.jsp", request, response);
 	}
 	
 	private Candidato obterCandidato(HttpServletRequest request)  throws ServletException, IOException {
