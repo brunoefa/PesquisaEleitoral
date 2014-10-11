@@ -3,9 +3,10 @@
 <jsp:include page="titulo-cadastro.jsp" />
 <div class="container">
 		<!-- Example row of columns -->
-			<form role="form" action="candidato" method="get">
+			<form role="form" action="candidato" method="get" id="formulario">
 			<input type="hidden" name="acao" value="salvar" />
 			<input type="hidden" name="id" value="${candidato.id}" />
+			<input type="hidden" name="status" id="status" value="true" />
 			<div class="row">
 				<div class="col-md-2 align-right">
 					<img src="${candidato.foto}"
@@ -83,8 +84,8 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-10 align-right">
 					<a href="/pesquisa">Cancelar</a>
-					<button type="submit" class="btn btn-default btn-lg publicar">Salvar como rascunho</button>
-					<button type="submit" class="btn btn-primary btn-lg salvar">Publicar</button>
+					<button type="button" id="rascunho" class="btn btn-default btn-lg publicar">Salvar como rascunho</button>
+					<button type="button" id="publicar" class="btn btn-primary btn-lg salvar">Publicar</button>
 				</div>
 			</div>
 		</form>

@@ -31,7 +31,7 @@ public class CandidatoDao {
 	}
 	
 	public void editar(Candidato candidato) {
-		String sql = "update candidato set nome = ?, foto = ?, partido = ?, cargo = ?, numero = ? where id = ?";
+		String sql = "update candidato set nome = ?, foto = ?, partido = ?, cargo = ?, numero = ?, status = ? where id = ?";
 		try {
 			PreparedStatement stm = connection.prepareStatement(sql);
 			
@@ -40,7 +40,8 @@ public class CandidatoDao {
 			stm.setString(3, candidato.getPartido());
 			stm.setString(4, candidato.getCargo());
 			stm.setString(5, candidato.getNumero());
-			stm.setInt(6, candidato.getId());
+			stm.setBoolean(6, candidato.getStatus());
+			stm.setInt(7, candidato.getId());
 			
 			stm.execute();
 			stm.close();
@@ -52,7 +53,7 @@ public class CandidatoDao {
 	}
 	
 	public void salvar(Candidato candidato) {
-		String sql = "insert into candidato (nome, foto, partido, cargo, numero) values (?, ?, ?, ?, ?)";
+		String sql = "insert into candidato (nome, foto, partido, cargo, numero, status) values (?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stm = connection.prepareStatement(sql);
 			
@@ -61,6 +62,7 @@ public class CandidatoDao {
 			stm.setString(3, candidato.getPartido());
 			stm.setString(4, candidato.getCargo());
 			stm.setString(5, candidato.getNumero());
+			stm.setBoolean(6, candidato.getStatus());
 			
 			stm.execute();
 			stm.close();

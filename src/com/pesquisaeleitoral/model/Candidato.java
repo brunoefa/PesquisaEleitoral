@@ -8,8 +8,9 @@ public class Candidato {
 	private String numero;
 	private String cargo;
 	private Integer votos;
+	private Boolean status;
 
-	public Candidato(Integer id, String nome, String foto, String partido, String numero, String cargo) {
+	public Candidato(Integer id, String nome, String foto, String partido, String numero, String cargo, Boolean status) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -17,6 +18,7 @@ public class Candidato {
 		this.partido = partido;
 		this.numero = numero;
 		this.cargo = cargo;
+		this.status = status;
 	}
 	
 	public Candidato() {
@@ -77,5 +79,13 @@ public class Candidato {
 
 	public void setVotos(Integer votos) {
 		this.votos = votos;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 }

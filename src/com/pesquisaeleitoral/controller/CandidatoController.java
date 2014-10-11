@@ -13,18 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.pesquisaeleitoral.dao.CandidatoDao;
 import com.pesquisaeleitoral.model.Candidato;
 
-/**
- * Servlet implementation class CandidatoController
- */
 @WebServlet("/candidato")
 public class CandidatoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private CandidatoDao dao;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public CandidatoController() {
         super();
         dao = new CandidatoDao();
@@ -100,7 +94,13 @@ public class CandidatoController extends HttpServlet {
 		String partido = request.getParameter("partido");
 		String numero = request.getParameter("numero");
 		String cargo = request.getParameter("cargo");
-		return new Candidato(id, nome, foto, partido, numero, cargo);
+		
+		Boolean status = Boolean.FALSE;
+		String stringStatus = request.getParameter("status");
+		if (stringStatus != null && !stringStatus.isEmpty()) {
+			status = Boolean.parseBoolean(stringStatus);
+		}
+		return new Candidato(id, nome, foto, partido, numero, cargo, status);
 	}
 	
 	private void encaminharRequisicao(String recurso, HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
