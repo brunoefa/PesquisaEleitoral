@@ -1,20 +1,20 @@
-$( document ).ready(function() {
-	
+$(document).ready(function() {
 	// Confirmação de exclusão
+	
+	$("#linkDeletar").on("click", function() {
+		var id = $(this).data("candidato-id");
+		alert (id);
+//		$("#confirmaExclusao #candidatoId").val(id);
+	});
 	
 	$('#confirmaExclusao #confirmar').click(function (e) {
 		id = $("#confirmaExclusao #candidatoId").val();
 		destino = 'candidato?acao=deletar&id=' + id;
-		window.location.href = destino;
+//		window.location.href = destino;
 	});
 
 	$('#confirmaExclusao #cancelar').click(function (e) {
 		$('#confirmaExclusao').modal('hide')
-	});
-	
-	$('#linkDeletar').click(function (e) {
-		id = $(this).data("candidato-id");
-		$("#confirmaExclusao #candidatoId").val(id);
 	});
 	
 	$('#confirmaExclusao #cancelar').click(function (e) {
@@ -52,5 +52,4 @@ $( document ).ready(function() {
 	if (src == "") {
 		$("#foto").attr("src","http://demo.patternlab.io/images/fpo_avatar.png");
 	}
-
 });
