@@ -90,7 +90,11 @@ public class CandidatoController extends HttpServlet {
 			id = Integer.parseInt(stringId);
 		}
 		String nome = request.getParameter("nome");
+		
 		String foto = request.getParameter("foto");
+		if (stringId != null && !stringId.isEmpty()) {
+			foto = "http://demo.patternlab.io/images/fpo_avatar.png";
+		}
 		String partido = request.getParameter("partido");
 		String numero = request.getParameter("numero");
 		String cargo = request.getParameter("cargo");

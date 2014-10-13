@@ -10,7 +10,8 @@
         <p>Tem certeza que deseja excluir este registro?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="confirmar" class="btn btn-default" data-dismiss="modal">Sim</button>
+      	<input type="hidden" id="candidatoId" value="0" /> 
+        <button type="button" id="confirmar" class="btn btn-default" data-dismiss="modal" data-candidato-id="0">Sim</button>
         <button type="button" id="cancelar" class="btn btn-primary">Cancelar</button>
       </div>
     </div><!-- /.modal-content -->

@@ -9,18 +9,17 @@
 			<input type="hidden" name="status" id="status" value="true" />
 			<div class="row">
 				<div class="col-md-2 align-right">
-					<img src="${candidato.foto}"
-						 alt="Candidato" class="img-circle avatar-cadastro">
+					<img src="${candidato.foto}" alt="Candidato" class="img-circle avatar-cadastro" id="foto">
 				</div>
 				<div class="col-md-10">
-						<div class="form-group">
-							<label for="input-name">Nome</label> 
-							<input type="text" value="${candidato.nome}" name="nome" class="form-control" id="input-name" placeholder="Informe o nome do candidato">
-						</div>
-						<div class="form-group">
-							<label for="input-foto">Foto</label>
-							<input type="text" value="${candidato.foto}" class="form-control" name="foto" id="input-foto" placeholder="Informe a url da foto">
-						</div>
+					<div class="form-group">
+						<label for="input-name">Nome</label> 
+						<input type="text" value="${candidato.nome}" name="nome" class="form-control" id="input-name" placeholder="Informe o nome do candidato">
+					</div>
+					<div class="form-group">
+						<label for="input-foto">Foto</label>
+						<input type="text" value="${candidato.foto}" class="form-control" name="foto" id="input-foto" placeholder="Informe a url da foto">
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -35,47 +34,47 @@
 					<div class="form-group">
 						<label for="input-partido">Partido</label>
 						<select class="form-control" id="input-partido" name="partido" data-option-selected="${candidato.partido}">
-							<option>PDT</option>
-							<option>PT</option>
-							<option>DEM</option>
-							<option>PCdoB</option>
-							<option>PSB</option>
-							<option>PSDB</option>
-							<option>PTC</option>
-							<option>PSC</option>
-							<option>PMN</option>
-							<option>PRP</option>
-							<option>PPS</option>
-							<option>PV</option>
-							<option>PTdoB</option>
-							<option>PP</option>
-							<option>PSTU</option>
-							<option>PCB</option>
-							<option>PRTB</option>
-							<option>PHS</option>
-							<option>PSDC</option>
-							<option>PCO</option>
-							<option>PTN</option>
-							<option>PSL</option>
-							<option>PRB</option>
-							<option>PSOL</option>
-							<option>PR</option>
-							<option>PSD</option>
-							<option>PPL</option>
-							<option>PEN</option>
-							<option>PROS</option>
+							<option value="PDT" >PDT</option>
+							<option value="PT" >PT</option>
+							<option value="DEM" >DEM</option>
+							<option value="PCdoB" >PCdoB</option>
+							<option value="PSB" >PSB</option>
+							<option value="PSDB" >PSDB</option>
+							<option value="PTC" >PTC</option>
+							<option value="PSC" >PSC</option>
+							<option value="PMN" >PMN</option>
+							<option value="PRP" >PRP</option>
+							<option value="PPS" >PPS</option>
+							<option value="PV" >PV</option>
+							<option value="PTdoB" >PTdoB</option>
+							<option value="PP" >PP</option>
+							<option value="PSTU" >PSTU</option>
+							<option value="PCB" >PCB</option>
+							<option value="PRTB" >PRTB</option>
+							<option value="PHS" >PHS</option>
+							<option value="PSDC" >PSDC</option>
+							<option value="PCO" >PCO</option>
+							<option value="PTN" >PTN</option>
+							<option value="PSL" >PSL</option>
+							<option value="PRB" >PRB</option>
+							<option value="PSOL" >PSOL</option>
+							<option value="PR" >PR</option>
+							<option value="PSD" >PSD</option>
+							<option value="PPL" >PPL</option>
+							<option value="PEN" >PEN</option>
+							<option value="PROS" >PROS</option>
 						</select>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="input-cargo">Cargo</label>
-						<select class="form-control" id="input-partido" name="cargo" id="input-cargo" data-option-selected="${candidato.cargo}">
-							<option>Presidente da República</option>
-							<option>Governador</option>
-							<option>Deputado Federal</option>
-							<option>Deputado Estadual</option>
-							<option>Senador</option>
+						<select class="form-control" id="input-cargo" name="cargo" id="input-cargo" data-option-selected="${candidato.cargo}">
+							<option value="Presidente da República" >Presidente da República</option>
+							<option value="Governador" >Governador</option>
+							<option value="Deputado Federal" >Deputado Federal</option>
+							<option value="Deputado Estadual" >Deputado Estadual</option>
+							<option value="Senador" >Senador</option>
 						</select>
 					</div>
 				</div>
