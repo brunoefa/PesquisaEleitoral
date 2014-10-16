@@ -31,10 +31,11 @@ public class UsuarioController extends HttpServlet {
 			salvar(request, response);
 		} else if ("deslogar".equals(acao)) {
 			deslogar(request, response);
-		} else if ("login".equals(acao)) {
+		} else if ("logar".equals(acao)) {
+			logar(request, response);
+		}else {
 			mostrarLogin(request, response);
 		}
-		logar(request, response);
 	}
 
 	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,19 +49,16 @@ public class UsuarioController extends HttpServlet {
 		if (validarSenha(usuario.getSenha(), confirmacao)) {
 			dao.salvar(usuario);
 			CandidatoController c = new CandidatoController();
+			request.setAttribute("sucesso", "Usuário cadastrado com sucesso!");
 			c.listar(request, response);
 		}else {
 			request.setAttribute("erro", "Senha não confere com a confirmação de senha");
-//			request.setAttribute("sucesso", "Senha não confere com a confirmação de senha");
 			cadastrar(request, response);
 		}
 	}
 	
 	private Boolean validarSenha(String senha, String confirmacao) {
-		if (senha.equals(confirmacao)) {
-			return true;
-		}
-		return false;
+		return senha.equals(confirmacao);
 	}
 
 	private void mostrarLogin(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {

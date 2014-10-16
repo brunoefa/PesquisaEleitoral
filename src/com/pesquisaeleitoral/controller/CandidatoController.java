@@ -44,6 +44,7 @@ public class CandidatoController extends HttpServlet {
 	protected void deletar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		Candidato candidato = obterCandidato(request); 
 		dao.deletar(candidato.getId());
+		request.setAttribute("sucesso", "Candidato excluido com sucesso!");
 		listar(request, response);
 	}
 
@@ -51,7 +52,9 @@ public class CandidatoController extends HttpServlet {
 		Candidato candidato = obterCandidato(request);
 		if (candidato.getId() == null) {
 			dao.salvar(candidato);
+			request.setAttribute("sucesso", "Candidato salvo com sucesso!");
 		}else {
+			request.setAttribute("sucesso", "Candidato atualizado com sucesso!");
 			dao.editar(candidato);
 		}
 		listar(request, response);

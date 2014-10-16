@@ -62,7 +62,7 @@ public class UsuarioDao {
 		usuario.setNome(rs.getString("nome"));
 		usuario.setEmail(rs.getString("email"));
 		usuario.setSenha(rs.getString("senha"));
-		usuario.setStatus(rs.getBoolean("statys"));
+		usuario.setStatus(rs.getBoolean("status"));
 		
 		return usuario;
 	}
