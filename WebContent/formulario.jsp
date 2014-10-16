@@ -33,7 +33,7 @@
 				<div class="col-md-2">
 					<div class="form-group">
 						<label for="input-partido">Partido</label>
-						<select class="form-control" id="input-partido" name="partido" data-option-selected="${candidato.partido}">
+						<select class="form-control" id="input-partido" name="partido" data-partido="${candidato.partido}">
 							<option value="PDT" >PDT</option>
 							<option value="PT" >PT</option>
 							<option value="DEM" >DEM</option>
@@ -69,7 +69,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label for="input-cargo">Cargo</label>
-						<select class="form-control" id="input-cargo" name="cargo" id="input-cargo" data-option-selected="${candidato.cargo}">
+						<select class="form-control" id="input-cargo" name="cargo" id="input-cargo" data-cargo="${candidato.cargo}">
 							<option value="Presidente da República" >Presidente da República</option>
 							<option value="Governador" >Governador</option>
 							<option value="Deputado Federal" >Deputado Federal</option>

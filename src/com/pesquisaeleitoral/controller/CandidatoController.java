@@ -41,13 +41,13 @@ public class CandidatoController extends HttpServlet {
 		}
 	}
 
-	private void deletar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+	protected void deletar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		Candidato candidato = obterCandidato(request); 
 		dao.deletar(candidato.getId());
 		listar(request, response);
 	}
 
-	private void salvar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+	protected void salvar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		Candidato candidato = obterCandidato(request);
 		if (candidato.getId() == null) {
 			dao.salvar(candidato);
@@ -57,13 +57,13 @@ public class CandidatoController extends HttpServlet {
 		listar(request, response);
 	}
 	
-	private void votar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+	protected void votar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
 		Candidato candidato = obterCandidato(request);
 		dao.registrarVoto(candidato);
 		listar(request, response);
 	}
 
-	private void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void listar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Candidato> listaCandidatos = dao.buscarTodos();
 		Integer total = dao.obterTotalDeVotos();
 		request.setAttribute("listaCandidatos", listaCandidatos);
@@ -71,11 +71,11 @@ public class CandidatoController extends HttpServlet {
 		encaminharRequisicao("/listagem.jsp", request, response);
 	}
 	
-	private void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void cadastrar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		encaminharRequisicao("/formulario.jsp", request, response);
 	}
 	
-	private void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void editar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Candidato candidato = new Candidato();
 		candidato = obterCandidato(request);
 		candidato = dao.buscar(candidato.getId());
@@ -92,9 +92,6 @@ public class CandidatoController extends HttpServlet {
 		String nome = request.getParameter("nome");
 		
 		String foto = request.getParameter("foto");
-		if (stringId != null && !stringId.isEmpty()) {
-			foto = "http://demo.patternlab.io/images/fpo_avatar.png";
-		}
 		String partido = request.getParameter("partido");
 		String numero = request.getParameter("numero");
 		String cargo = request.getParameter("cargo");

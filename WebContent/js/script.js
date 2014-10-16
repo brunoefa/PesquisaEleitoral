@@ -35,21 +35,27 @@ $(document).ready(function() {
 	
 	// Preenchimento de combobox
 	
-	partido = $("#input-partido").data("option-selected");
+	partido = $("#input-partido").data("partido");
 	$("#input-partido").val(partido);
 	
-	cargo = $("#input-cargo").data("option-selected");
+	cargo = $("#input-cargo").data("cargo");
 	$("#input-cargo").val(cargo);
 	
 	// Carregamento de fotos
 	
 	$("#input-foto").blur(function (e) {
-		foto = $(this).val();
-		$("#foto").attr("src",foto);
+		src = $(this).val();
+		if (src == "") {
+			$("#foto").attr("src","http://demo.patternlab.io/images/fpo_avatar.png");
+		}else{
+			$("#foto").attr("src",src);
+		}
 	});
 	
-	src = $("#foto").attr("src");
-	if (src == "") {
-		$("#foto").attr("src","http://demo.patternlab.io/images/fpo_avatar.png");
-	}
+	$("#formulario").submit(function (e) {
+		src = $("#foto").val();
+		if (src == "") {
+			$("#input-foto").val("http://demo.patternlab.io/images/fpo_avatar.png");
+		}
+	});
 });

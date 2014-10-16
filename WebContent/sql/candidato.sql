@@ -6,6 +6,6 @@ CREATE TABLE `candidato` (
   `cargo` varchar(45) NOT NULL,
   `numero` varchar(5) NOT NULL,
   `votos` int(11) NOT NULL DEFAULT '0',
-  `numero` TINYINT(1) NOT NULL DEFAULT '0',
+  `status` TINYINT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
