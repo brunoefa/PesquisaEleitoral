@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.pesquisaeleitoral.dao.UsuarioDao;
 import com.pesquisaeleitoral.model.Usuario;
@@ -66,11 +67,26 @@ public class UsuarioController extends HttpServlet {
 	}
 
 	private void logar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
+		Usuario usuarioLogin = obterUsuario(request);
+		Usuario usuarioBanco = dao.buscar(usuarioLogin.getEmail());
 		
+		if (usuarioLogin.getSenha().equals(usuarioBanco.getSenha())) {
+			HttpSession session = request.getSession();
+			session.setAttribute("usuario", usuarioBanco);
+			request.setAttribute("sucesso", "Login efetuado com sucesso!");
+			CandidatoController c = new CandidatoController();
+			c.listar(request, response);
+		}else {
+			request.setAttribute("erro", "Login ou senha inválidos!");
+			mostrarLogin(request, response);
+		}
 	}
 
 	private void deslogar(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		session.invalidate();
+		CandidatoController c = new CandidatoController();
+		c.listar(request, response);
 	}
 
 	private Usuario obterUsuario(HttpServletRequest request)  throws ServletException, IOException {

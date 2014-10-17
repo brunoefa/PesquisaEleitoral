@@ -32,7 +32,29 @@ public class UsuarioDao {
 			throw new RuntimeException();
 		}
 	}
-	
+
+	public Usuario buscar(String email) {
+		Usuario usuario = new Usuario();
+		String sql = "select * from usuario where LOWER(email) = LOWER(?)";
+		try {
+			PreparedStatement stm = connection.prepareStatement(sql);
+			stm.setString(1, email);
+			
+			ResultSet rs = stm.executeQuery();
+			while (rs.next()) {
+				usuario = preencheUsuario(rs);
+			}
+			rs.close();
+			stm.close();
+			
+			return usuario;
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new RuntimeException();
+		}
+	}
+
 	public Usuario buscar(Integer id) {
 		Usuario usuario = new Usuario();
 		String sql = "select * from usuario where id = ?";

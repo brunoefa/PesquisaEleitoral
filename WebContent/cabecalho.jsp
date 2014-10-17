@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="pt">
   <head>
@@ -42,15 +43,24 @@
           <a class="navbar-brand" href="/pesquisa">Pesquisa Eleitoral</a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
+          <c:if test="${empty sessionScope.usuario}">
+          <form class="navbar-form navbar-right" role="form" action="usuario" method="post">
+            <input type="hidden" name="acao" value="logar" class="form-control">
             <div class="form-group">
-              <input type="text" placeholder="E-mail" class="form-control">
+              <input type="text" name="email" placeholder="E-mail" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Senha" class="form-control">
+              <input type="password" name="senha" placeholder="Senha" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Entrar</button>
           </form>
+          </c:if>
+          <c:if test="${not empty sessionScope.usuario}">
+          	<div class="usuario">
+          		Olá &nbsp;${sessionScope.usuario.nome}&nbsp;
+          		<a href="usuario?acao=deslogar" >sair</a>
+          	</div>
+          </c:if>
         </div><!--/.navbar-collapse -->
       </div>
     </div>

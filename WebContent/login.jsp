@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="cabecalho.jsp" />
 <div class="container">
-	<form class="form-signin" role="form" action=usuario method="post">
+	<form class="form-signin" role="form" action="usuario" method="post">
 		<jsp:include page="mensagem.jsp" />
 		<h2 class="form-signin-heading">Efetuar login</h2>
 		<input type="hidden" name="acao" value="logar">

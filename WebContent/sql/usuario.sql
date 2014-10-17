@@ -3,6 +3,7 @@ CREATE TABLE `usuario` (
   `nome` varchar(45) NOT NULL,
   `email` varchar(200) NOT NULL,
   `senha` varchar(100) NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
