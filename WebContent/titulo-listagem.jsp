@@ -7,8 +7,12 @@
         <h1>Olá, eleitor!</h1>
         <p>Este projeto tem o intuito de monitorar em tempo real a intenção de voto do eleitorado brasileiro com relação as eleições 2014. Participe e contribua para uma pesquisa sem manipulação de dados!</p>
         <p>
-        	<a class="btn btn-primary btn-lg" role="button" href="usuario?acao=cadastrar">Não possui login? Cadastr-se</a>
-        	<a class="btn btn-success btn-lg" role="button" href="candidato?acao=cadastrar">Cadastre um novo candidato</a>
+        	<a class="btn btn-primary btn-lg" role="button" href="usuario?acao=cadastrar">
+        		<span class="glyphicon glyphicon-user"></span>&nbsp;Não possui login? Cadastre-se!
+        	</a>
+        	<a class="btn btn-success btn-lg" role="button" href="candidato?acao=cadastrar">
+        		<span class="glyphicon glyphicon-flag"></span>&nbsp;Cadastre um novo candidato
+        	</a>
         </p>
       </div>
     </div>
