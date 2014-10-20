@@ -9,6 +9,7 @@
 		<input type="email" name="email" id="first" class="form-control" placeholder="E-mail" required autofocus>
 		<input type="password" name="senha" id="last" class="form-control" placeholder="Senha" required>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+		<br /><a href="usuario?acao=login">Não possui cadastro?</a>
 	</form>
 </div>
 <jsp:include page="rodape.jsp" />

@@ -11,6 +11,7 @@
 		<input type="password" name="senha" class="form-control in" placeholder="Senha" required>
 		<input type="password" name="confirmacao" id="last" class="form-control" placeholder="Confirmação" required>
 		<button class="btn btn-lg btn-primary btn-block"  type="submit">Cadastrar</button>
+		<br /><a href="usuario?acao=login">Já possui login?</a>
 	</form>
 </div>
 <jsp:include page="rodape.jsp" />
