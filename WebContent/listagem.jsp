@@ -7,8 +7,10 @@
 <div class="container">
 	<jsp:include page="mensagem.jsp" />
 	<c:forEach items="${listaCandidatos}" var="candidato">
-		<c:set scope="request" var="candidato" value="${candidato}" />
-		<jsp:include page="item-listagem.jsp" />
+		<c:if test="${candidato.status || admin}">
+			<c:set scope="request" var="candidato" value="${candidato}" />
+			<jsp:include page="item-listagem.jsp" />
+		</c:if>
 	</c:forEach>
 </div>
  

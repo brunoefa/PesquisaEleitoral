@@ -165,6 +165,7 @@ public class CandidatoDao {
 		candidato.setPartido(rs.getString("partido"));
 		candidato.setNumero(rs.getString("numero"));
 		candidato.setVotos(rs.getInt("votos"));
+		candidato.setStatus(rs.getBoolean("status"));
 		
 		return candidato;
 	}

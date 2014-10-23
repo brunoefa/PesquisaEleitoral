@@ -72,7 +72,11 @@ public class UsuarioController extends HttpServlet {
 		
 		if (usuarioLogin.getSenha().equals(usuarioBanco.getSenha())) {
 			HttpSession session = request.getSession();
+
 			session.setAttribute("usuario", usuarioBanco);
+			session.setAttribute("logado", Boolean.TRUE);
+			session.setAttribute("admin", usuarioBanco.getStatus() ? Boolean.TRUE : Boolean.FALSE);
+
 			request.setAttribute("sucesso", "Login efetuado com sucesso!");
 			CandidatoController c = new CandidatoController();
 			c.listar(request, response);

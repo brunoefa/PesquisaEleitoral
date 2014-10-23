@@ -14,9 +14,10 @@
           	<h4 class="cargo">${candidato.cargo}</h4>
           	<span class="label label-danger">${candidato.partido}</span>&nbsp;
           	<span class="label label-default">${candidato.numero}</span>&nbsp;
+          	<c:if test="${admin}">
           	<a href="#" id="linkDeletar" data-candidato-id="${candidato.id}" data-toggle="modal" data-target="#confirmaExclusao">Deletar</a>&nbsp;
           	<a href="candidato?acao=editar&id=${candidato.id}" >Editar</a>
-          	
+          	</c:if>
           	<div class="progress votos">
 			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${percentual}%;">
 			    ${candidato.votos} Votos
@@ -24,7 +25,9 @@
 			</div>
           </div>
           <div class="col-md-2 align-right padding-top-100">
+          	<c:if test="${logado}">
           	<p><a href="candidato?acao=votar&id=${candidato.id}" class="btn btn-primary btn-lg">Votar</a></p>
+          	</c:if>
           </div>
         </div>
       </div>
